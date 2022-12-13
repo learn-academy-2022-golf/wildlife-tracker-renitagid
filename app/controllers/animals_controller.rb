@@ -18,7 +18,7 @@ class AnimalsController < ApplicationController
           render json: animal.errors
         end
       end
-    
+
     def destroy
         animal = Animal.find(params[:id])
         if animal.destroy
@@ -41,7 +41,7 @@ class AnimalsController < ApplicationController
     private
 
     def animal_params
-        params.require(:animal).permit(:name, :binomial)
+        params.require(:animal).permit(:name, :binomial, sightings_attributes:[:id, :animal_id, :latitude, :longitude, :date])
     end
 
 end
